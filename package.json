@@ -1,0 +1,31 @@
+{
+  "name": "astro-preact",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "overrides": {
+    "react": "npm:@preact/compat@latest",
+    "react-dom": "npm:@preact/compat@latest"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^1.2.0",
+    "astro": "^1.9.0",
+    "preact": "^10.11.3"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.13",
+    "@unocss/preset-icons": "^0.48.0",
+    "unocss": "^0.48.0",
+    "unocss-preset-scalpel": "^1.2.5",
+    "vite": "^4.0.4",
+    "vite-plugin-pwa": "^0.14.1",
+    "workbox-window": "^6.5.4"
+  }
+}
