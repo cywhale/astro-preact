@@ -1,15 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+// @unocss-include
+import 'uno.css'
+import { Fragment } from 'preact'
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import ApiUI from '../components/ApiUI.jsx'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
+<Layout title="Astro-preact">
+    <main>
+        <Fragment>
+          <>
+            <div class="flex flex-warp justify-between">
+                <div id="toolbardiv" class="w-15p inline-flex" />
+                <div class="flex-auto w-70p max-h-50p dark:text-white centerdiv">
+                    <h1>Open Ocean <span class="text-gradient">API</span> query</h1>
+                    <div id="dyloaddiv" />
+                    <br/><br/><hr class="w-60p" /><br/>
+                </div>
+                <div id="navdiv" class="inline-flex justify-end w-15p max-h-50p dark:text-white">
+                    <div id="xlogindiv" />
+                </div>
+            </div>
+            <div class="griddiv">
+                <div id="funcbardiv" class="gridleft" />
+                <div id="outdiv" class="gridmid" />
+            </div> 
+            <div class="centerdiv">
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
@@ -32,14 +49,18 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
-	</main>
+            </div>
+          </>
+          <ApiUI client:load />
+        </Fragment>
+    </main>
 </Layout>
 
 <style>
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 60ch;
+		max-width: 100%;
 	}
 	h1 {
 		font-size: 3rem;
@@ -77,5 +98,31 @@ import Card from '../components/Card.astro';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
+	}
+	.centerdiv {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    flex-wrap: wrap;
+	    flex-direction: column;
+	}
+	.griddiv {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+	}
+	.gridleft {
+            width: 15%;
+        }
+	.gridmid {
+            width: auto;
+            min-width:50%;
+            flex: 1 1 auto; /* middle column shrink or grow to available width */
+	}
+	.gridthird {
+            width: calc(100%-15%-50%);
+            display: flex;
+            justify-content: center;
+             align-items: center;
 	}
 </style>
